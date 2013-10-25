@@ -16,17 +16,17 @@ production:
   apiusername: myusername
   apipassword: mypassword
   clientid: 1234
-  ```
-  ## Example Usage
-  ```
-  card = GPGPayment::CreditCard.new(
-      name: 'Cardholder Name',
-      card_number: 4111111111111111,
-      exp_month: 10,
-      exp_year: 2016,
-      billing_zip: 12345
-    )
-    trans = GPGPayment::Transaction.new(card, 'InvoiceID', 'Invoice Desc'
-    auth = trans.authorize 1
-    puts 'Approved!' if auth.approved?
-    ```
+```
+## Example Usage
+```
+card = GPGPayment::CreditCard.new(
+  name: 'Cardholder Name',
+  card_number: 4111111111111111,
+  exp_month: 10,
+  exp_year: 2016,
+  billing_zip: 12345
+)
+trans = GPGPayment::Transaction.new(card, 'InvoiceID', 'Invoice Desc')
+auth = trans.authorize 1
+puts 'Approved!' if auth.approved?
+```
