@@ -28,7 +28,7 @@ module GPGPayment
       end
       
       case args[0]
-        when Float
+        when Float, Fixnum
           @params[:amount] = args[0]
         when String
           @params[:anatransactionid] = args[0]
