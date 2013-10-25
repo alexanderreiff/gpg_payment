@@ -5,12 +5,12 @@ Gem to interface with Global Payment Gateway (GPG)'s Merchant Processing API in 
 ## Installation
 Add the following to your Gemfile:
 ```
-gem 'gpg_payment', git: 'git://github.com/alexanderreiff/gpg-payment.git'
+gem 'gpg_payment', git: 'git://github.com/alexanderreiff/gpg_payment.git'
 ```
 and run `bundle install`
 
 ## Configuration
-Create a **gpg_payment.yml** file in the config directory and enter your credentials provided by GPG in the following format:
+Create a **gpg_payment.yml** file in the **config** directory on your Rails app and enter your credentials provided by GPG in the following format:
 ```
 production: 
   apiusername: myusername
