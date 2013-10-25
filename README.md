@@ -10,7 +10,7 @@ gem 'gpg_payment', git: 'git://github.com/alexanderreiff/gpg_payment.git'
 and run `bundle install`
 
 ## Configuration
-Create a **gpg_payment.yml** file in the **config** directory on your Rails app and enter your credentials provided by GPG in the following format:
+Create a **gpg_payment.yml** file in the **config** directory of your Rails app, and enter your credentials provided by GPG in the following format:
 ```
 production: 
   apiusername: myusername
