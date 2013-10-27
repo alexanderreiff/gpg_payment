@@ -24,14 +24,14 @@ module GPGPayment
     
     def to_gpg_params
       fields = {name: nil, 
-        card_number: 'CCNumber', 
-        cvv: 'CVV',
+        card_number: :CCNumber, 
+        cvv: :CVV,
         exp_year: nil,
         exp_month: nil, 
-        billing_address: 'CCBillingAddress',
-        billing_state: 'CCBillingState',
-        billing_zip: 'CCBillingZip',
-        billing_country: 'CCBillingCountry'
+        billing_address: :CCBillingAddress,
+        billing_state: :CCBillingState,
+        billing_zip: :CCBillingZip,
+        billing_country: :CCBillingCountry
       }
       params = {}
       date = []
@@ -40,8 +40,8 @@ module GPGPayment
         case attr
           when :name
             name_parts = self.name.split(' ').map { |part| part.gsub(/[^0-9a-z ]/i, '') }.keep_if { |part| not part.empty? }
-            params['CCHolderFirstName'] = name_parts.shift
-            params['CCHolderLastName'] = name_parts.join ' '
+            params[:CCHolderFirstName] = name_parts.shift
+            params[:CCHolderLastName] = name_parts.join ' '
           when :exp_month
             date[0] = (send attr).to_s.rjust(2, '0')
           when :exp_year
@@ -51,7 +51,7 @@ module GPGPayment
             params[param_key] = value if value
         end
       end
-      params['CCExp'] = date.join unless date.empty?
+      params[:CCExp] = date.join unless date.empty?
       params
     end
   end

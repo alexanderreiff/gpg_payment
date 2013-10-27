@@ -28,12 +28,14 @@ module GPGPayment
       end
       
       case args[0]
-        when Float, Fixnum
+        when Numeric
           @params[:amount] = args[0]
         when String
           @params[:anatransactionid] = args[0]
         when Hash
           @params.merge! args[0]
+        else
+          raise TypeError, 'Transaction value must be a number, string or hash of valid GPG parameters.'
       end
       gpg_call
     end
@@ -41,15 +43,10 @@ module GPGPayment
     private
       def gpg_call
         if @card.card_number == '4444444444444444' && ! Rails.env.production?
-          return Response.new parse_response 'responsetext=TEST CARD APPROVAL&approvecode=TEST123456&anatransactionid=TEST123456&response=1&responsecode=00'
+          Response.new 'responsetext=TEST CARD APPROVAL&approvecode=TEST123456&anatransactionid=TEST123456&response=1&responsecode=00'
         else
-          Response.new parse_response self.class.post '/GPGCCProcess.aspx', {body: @params}
+          Response.new self.class.post '/GPGCCProcess.aspx', {body: @params}
         end
-      end
-      
-      def parse_response(resp_text)
-        resp = URI.decode_www_form resp_text
-        Hash[resp]
       end
   end
 end

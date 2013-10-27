@@ -2,7 +2,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = 'gpg_payment'
-  s.version     = '0.2.1'
+  s.version     = '0.2.2'
   s.date        = '2013-10-21'
   s.platform    = Gem::Platform::RUBY
   s.summary     = 'Gem to interface with GPG Merchant Processing API in a Ruby on Rails application'
